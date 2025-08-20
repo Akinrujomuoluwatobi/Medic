@@ -30,7 +30,7 @@ struct OnboardingView: View {
         }.onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: {
                 withAnimation {
-                    self.isActive = true
+                    self.isActive.toggle()
                 }
             })
         }
