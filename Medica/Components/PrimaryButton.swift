@@ -25,7 +25,7 @@ struct PrimaryButton: View {
                         
                 }
             
-        }.padding()
+        }
     }
 }
 
