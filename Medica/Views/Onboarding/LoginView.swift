@@ -30,7 +30,7 @@ struct LoginView: View {
                     
                     Spacer(minLength: 18)
                     
-                    InputField(textFIeldValue: $email, placeholderText: "Enter Your Email")
+                    InputField(textFIeldValue: $email, placeholderText: "Enter Your Email", keyboardType: .emailAddress)
                     
                     Spacer(minLength: 26)
                     
@@ -67,6 +67,48 @@ struct LoginView: View {
                         .fontWeight(.semibold)
                         .font(.title2)
                         .frame(maxWidth: .infinity)
+                    
+                    Spacer(minLength: 19)
+                    
+                    HStack (alignment: .center, spacing: 30) {
+                        Spacer()
+                        Button {
+                            
+                        } label: {
+                            LogoWIthBorder(logoName: "facebook")
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            LogoWIthBorder(logoName: "google")
+                        }
+                        
+                        Spacer()
+
+                    }
+                    
+                    Spacer(minLength: 19)
+                    
+                    HStack (alignment: .center) {
+                        Spacer()
+                        
+                        Button {
+                            
+                        } label: {
+                            HStack {
+                                Text("Don't have an account?")
+                                    .foregroundColor(.colorGray)
+                                    .fontWeight(.semibold)
+                                Text("Sign Up")
+                                    .foregroundColor(.colorPrimary)
+                                    .fontWeight(.semibold)
+                            }
+                        }
+                        
+                        Spacer()
+
+                    }
 
                 }
             }
