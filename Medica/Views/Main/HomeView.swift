@@ -39,12 +39,51 @@ struct HomeView: View {
                     Image("notificationsIcon")
                 }
                 
+               
                 
             }.padding()
             
             Spacer(minLength: 30)
             
             SearchBarView(searchText: $searchedText)
+            
+            TabView {
+                ForEach(0..<4) { item in
+                    ZStack() {
+                        
+                        
+                        HStack (alignment: .bottom) {
+                            VStack (alignment: .leading) {
+                                Text("Medical Center")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .foregroundStyle(.colorWhite)
+                                    .lineLimit(1)
+                                
+                                Text("Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.")
+                                    .foregroundStyle(.colorWhite)
+                                    .font(.caption)
+                                    
+                            }.padding()
+                            
+                            Image("doctorMale")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .scaledToFit()
+                                .alignmen
+                                
+                        }
+                    }
+                }
+            }.tabViewStyle(.page(indexDisplayMode: .always))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                .frame(height: 170)
+                .background{
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(.colorPrimary)
+                }
+                .padding()
+            
         }
         
         Spacer()
