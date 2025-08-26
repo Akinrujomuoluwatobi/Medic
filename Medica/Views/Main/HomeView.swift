@@ -11,6 +11,8 @@ struct HomeView: View {
     
     @State var searchedText: String = ""
     
+    var categories: [String] = ["Denteeth", "Therapist", "Surgeon", "Gynacologist", "General Nurse"]
+    
     var body: some View {
         ScrollView {
             HStack (spacing: 10) {
@@ -28,7 +30,7 @@ struct HomeView: View {
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundStyle(.black)
-    
+                    
                 }
                 
                 Spacer()
@@ -39,8 +41,6 @@ struct HomeView: View {
                     Image("notificationsIcon")
                 }
                 
-               
-                
             }.padding()
             
             Spacer(minLength: 30)
@@ -49,31 +49,7 @@ struct HomeView: View {
             
             TabView {
                 ForEach(0..<4) { item in
-                    ZStack() {
-                        
-                        
-                        HStack (alignment: .bottom) {
-                            VStack (alignment: .leading) {
-                                Text("Medical Center")
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .foregroundStyle(.colorWhite)
-                                    .lineLimit(1)
-                                
-                                Text("Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.")
-                                    .foregroundStyle(.colorWhite)
-                                    .font(.caption)
-                                    
-                            }.padding()
-                            
-                            Image("doctorMale")
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .scaledToFit()
-                                .alignmen
-                                
-                        }
-                    }
+                    MedicalCenterView()
                 }
             }.tabViewStyle(.page(indexDisplayMode: .always))
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
@@ -84,9 +60,42 @@ struct HomeView: View {
                 }
                 .padding()
             
+            HStack {
+                Text("Categories")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.black)
+                
+                Spacer()
+                
+                Text("See All")
+                    .foregroundStyle(.colorGray)
+
+            }.padding()
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 15) {
+                    ForEach(categories, id: \.self) { item in
+                        CategoryView(item: item)
+                    }
+                }
+            }.padding()
+            
+            HStack {
+                Text("All Doctors")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundStyle(.black)
+                
+                Spacer()
+                
+                Text("See All")
+                    .foregroundStyle(.colorGray)
+
+            }.padding()
+            
+            DoctorView()
         }
-        
-        Spacer()
     }
 }
 

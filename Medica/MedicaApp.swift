@@ -11,7 +11,7 @@ import SwiftUI
 struct MedicaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }
