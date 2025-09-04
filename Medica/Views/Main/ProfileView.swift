@@ -12,7 +12,8 @@ struct ProfileView: View {
     var profileContents = ProfileContent.allCases
     
     var body: some View {
-        ScrollView {
+        ScrollView (showsIndicators: false) {
+            Spacer(minLength: 30)
             Image("doctorMale")
                 .resizable()
                 .frame(width: 130, height: 130)
@@ -25,6 +26,8 @@ struct ProfileView: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundStyle(.black)
+            
+            Spacer(minLength: 30)
             
             ForEach(profileContents, id: \.self) { content in
                 ProfileItemView(profileItem: content)

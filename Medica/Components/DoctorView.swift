@@ -9,14 +9,15 @@ import SwiftUI
 
 struct DoctorView: View {
     var body: some View {
-        GeometryReader { geometry in
             HStack (alignment: .bottom) {
                 Image("doctorMale")
                     .resizable()
                     .padding(.leading)
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
                     .padding(.top)
-                    .frame(width: geometry.size.width * 0.3)
+                    .frame(width: 100)
+                    .clipped()
+                    .clipShape(.rect(cornerRadius: 10))
                 
                 VStack (alignment: .leading){
                     HStack {
@@ -51,7 +52,6 @@ struct DoctorView: View {
             }
             .padding()
         }
-    }
 }
 
 #Preview {

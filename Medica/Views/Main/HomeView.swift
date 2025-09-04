@@ -15,86 +15,88 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            HStack (spacing: 10) {
-                Image("doctorMale")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .clipShape(Circle())
-                    .scaledToFit()
-                
-                VStack (alignment: .leading) {
-                    Text("Hi, Welcome Back,")
-                        .foregroundStyle(.colorGray)
+            VStack {
+                HStack (spacing: 10) {
+                    Image("doctorMale")
+                        .resizable()
+                        .frame(width: 70, height: 70)
+                        .clipShape(Circle())
+                        .scaledToFit()
                     
-                    Text("John Doe Willams")
+                    VStack (alignment: .leading) {
+                        Text("Hi, Welcome Back,")
+                            .foregroundStyle(.colorGray)
+                        
+                        Text("John Doe Willams")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.black)
+                        
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                        
+                    } label: {
+                        Image("notificationsIcon")
+                    }
+                    
+                }.padding()
+                
+                Spacer(minLength: 30)
+                
+                SearchBarView(searchText: $searchedText)
+                
+                TabView {
+                    ForEach(0..<4) { item in
+                        MedicalCenterView()
+                    }
+                }.tabViewStyle(.page(indexDisplayMode: .always))
+                    .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+                    .frame(height: 170)
+                    .background{
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(.colorPrimary)
+                    }
+                    .padding()
+                
+                HStack {
+                    Text("Categories")
                         .font(.title2)
                         .fontWeight(.semibold)
                         .foregroundStyle(.black)
                     
-                }
-                
-                Spacer()
-                
-                Button {
+                    Spacer()
                     
-                } label: {
-                    Image("notificationsIcon")
-                }
+                    Text("See All")
+                        .foregroundStyle(.colorGray)
+                    
+                }.padding()
                 
-            }.padding()
-            
-            Spacer(minLength: 30)
-            
-            SearchBarView(searchText: $searchedText)
-            
-            TabView {
-                ForEach(0..<4) { item in
-                    MedicalCenterView()
-                }
-            }.tabViewStyle(.page(indexDisplayMode: .always))
-                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-                .frame(height: 170)
-                .background{
-                    RoundedRectangle(cornerRadius: 12)
-                        .fill(.colorPrimary)
-                }
-                .padding()
-            
-            HStack {
-                Text("Categories")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.black)
-                
-                Spacer()
-                
-                Text("See All")
-                    .foregroundStyle(.colorGray)
-
-            }.padding()
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 15) {
-                    ForEach(categories, id: \.self) { item in
-                        CategoryView(item: item)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack(spacing: 15) {
+                        ForEach(categories, id: \.self) { item in
+                            CategoryView(item: item)
+                        }
                     }
-                }
-            }.padding()
-            
-            HStack {
-                Text("All Doctors")
-                    .font(.title2)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.black)
+                }.padding()
                 
-                Spacer()
+                HStack {
+                    Text("All Doctors")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.black)
+                    
+                    Spacer()
+                    
+                    Text("See All")
+                        .foregroundStyle(.colorGray)
+                    
+                }.padding()
                 
-                Text("See All")
-                    .foregroundStyle(.colorGray)
-
-            }.padding()
-            
-            DoctorView()
+                DoctorView()
+            }.padding(.bottom, 50)
         }
     }
 }

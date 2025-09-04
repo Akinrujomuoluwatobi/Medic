@@ -24,9 +24,11 @@ struct MedicalCenterView: View {
                     
                 }.padding()
                 
-                Image("doctorMale")
+                Image("doctorFemale")
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100)
+                    .clipped()
                 
             }
         }
