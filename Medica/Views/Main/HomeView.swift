@@ -59,6 +59,7 @@ struct HomeView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .fill(.colorPrimary)
                     }
+                    .clipShape(.rect(cornerRadius: 12))
                     .padding()
                 
                 HStack {
