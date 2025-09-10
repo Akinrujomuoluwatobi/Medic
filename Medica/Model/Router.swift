@@ -9,5 +9,7 @@ import Foundation
 
 enum Router: Hashable {
     case allDoctersView
+    case appointmentView
+    case doctorDetailView
     
 }

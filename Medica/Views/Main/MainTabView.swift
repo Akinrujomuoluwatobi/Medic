@@ -55,6 +55,10 @@ struct MainTabView: View {
                     switch destination {
                     case .allDoctersView:
                         AllDoctorsView()
+                    case .appointmentView:
+                        AppointmentView()
+                    case .doctorDetailView:
+                        DoctorDetailsView()
                     }
                 }
 
