@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PrimaryButton: View {
     var label: String
+    var cornerRadius: CGFloat = 12
     var action: () -> Void
     var body: some View {
         Button {
@@ -20,7 +21,7 @@ struct PrimaryButton: View {
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background {
-                    RoundedRectangle(cornerRadius: 12)
+                    RoundedRectangle(cornerRadius: cornerRadius)
                         .fill(.colorPrimary)
                         
                 }

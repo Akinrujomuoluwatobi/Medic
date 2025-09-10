@@ -11,12 +11,16 @@ struct AllDoctorsView: View {
     
     @State var viewModel = AllDoctorViewModel()
     var body: some View {
-        VStack {
+        VStack(spacing: 30) {
             SearchBarView(searchText: $viewModel.searchText)
             
             ScrollView {
                 ForEach(0..<10) { item in
-                    DoctorView()
+                    DoctorView {
+                        
+                    }.onTapGesture {
+                        
+                    }
                 }
             }
         }.navigationTitle("All Doctors")

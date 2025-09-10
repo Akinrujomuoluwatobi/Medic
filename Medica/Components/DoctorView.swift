@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DoctorView: View {
+    var bookButtonAction: (() -> ())?
     var body: some View {
             HStack (alignment: .bottom) {
                 Image("doctorMale")
@@ -19,7 +20,7 @@ struct DoctorView: View {
                     .clipped()
                     .clipShape(.rect(cornerRadius: 10))
                 
-                VStack (alignment: .leading){
+                VStack (alignment: .leading, spacing: 19){
                     HStack {
                         Text("Dr. Pawan")
                             .font(.title3)
@@ -30,7 +31,7 @@ struct DoctorView: View {
                             
                         } label: {
                             Image(systemName: "heart")
-                                .tint(.colorSecondary)
+                                .foregroundStyle(.colorPrimary)
                                 .fontWeight(.bold)
                         }
                         
@@ -40,12 +41,24 @@ struct DoctorView: View {
                         .font(.caption)
                         .foregroundStyle(.colorGray)
                     
-                    PrimaryButton(label: "Book") {
+                    HStack {
+                        PrimaryButton(label: "Book", cornerRadius: 30) {
+                            bookButtonAction?()
+                        }
+                        
+                        Spacer(minLength: 55)
+                        Image(systemName: "star.fill")
+                            .renderingMode(.template)
+                            .foregroundStyle(.colorOrange)
+                        
+                        Text("5.0")
+                            .font(.title2)
+                            .fontWeight(.semibold)
                         
                     }
                 }.padding()
             }
-            .frame(height: 170)
+            .frame(height: 200)
             .background {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.colorLightBlue).opacity(0.3)
